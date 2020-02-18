@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire de connexion</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>Titre site</h1>
+
+<nav>
+
+</nav>
+
+<form id="loginform">
+    <label for="login"><input type="text" placeholder="login" name="login" id="login"></label>
+    <label for="password"><input type="password" name="password" id="password"></label>
+    <input type="button" value="Connexion" onclick="" class="log">
+</form>
+
+<script>
+    var token = "";
+    let loginform=document.getElementById('loginform');
+    let loginfield=document.getElementById('login');
+    let passwdfield=document.getElementById('password');
+    let body=$("body");
+
+
+    //$.get("http://iutbelfort.ltg-services.fr/getToken").done(function(result){
+        //token = parseJson(result);
+        //token = token["token"];
+    //});
+
+
+    $(".hello").click(function(){
+        $.get("http://localhost:8000/books").done(function(result){
+            token=result;
+            console.log(token);
+
+        }).fail(function () {
+            console.log("fail");
+        });
+    });
+
+    $(".log").click(function log() {
+        console.log(loginfield.value);
+        $.post("http://localhost:8000/login", { login: loginfield.value, passwd: passwdfield.value  }).done(function (result) {
+            token=result;
+            console.log(token);
+        })
+    });
+    
+    function makeCard(container, image) {
+
+    }
+</script>
+<!--
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="..." class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+</body>
+</html>

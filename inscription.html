@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" >
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="navconnexionindicator">Connexion</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="navregisterindicator">Inscription</a>
+      </li>
+    </ul>
+    <form class="" action="index.html" method="post">
+      <fieldset>
+        <legend>Informations de connexion</legend>
+        <div class="form-group">
+          <input type="text" name="loginfield" value="" placeholder="login">
+        </div>
+        <div class="form-group">
+          <input type="password" name="passwdfield" value="" placeholder="password">
+        </div>
+      </fieldset>
+      <fieldset id="accountfieldset">
+        <legend>Informations du compte</legend>
+        <div class="form-group">
+          <label for="namefield">Nom</label>
+          <input type="text" name="namefield" id="namefield" value="">
+        </div>
+        <div class="form-group">
+          <label for="firstnamefield">Prénom</label>
+          <input type="text" name="firstnamefield" id="firstnamefield" value="">
+        </div>
+        <div class="form-group">
+          <label for="emailfield">E-mail</label>
+          <input type="text" name="emailfield" id="emailfield" value="">
+        </div>
+      </fieldset>
+    </form>
+    <script>
+      //let mode="connexion";
+      let navloginindicator=$('#navloginindicator');
+      let navregisterindicator=$('#navregisterindicator');
+      let accountfieldset=$('#accountfieldset');
+
+      window.onload=function () {
+        accountfieldset.addClass("disabledfield");
+        navloginindicator.addClass("active");
+
+        navloginindicator.on("click",function(){ changeMode(navloginindicator)});
+        navregisterindicator.on("click", function(){ changeMode(navregisterindicator)});
+
+      };
+      function changeMode(navindicator) {
+        console.log("hello");
+        navindicator.addClass("active");
+        if (navindicator[0].id==="navregisterindicator"){
+          console.log("hello2");
+          navloginindicator.removeClass("active");
+          accountfieldset.display="block";
+        } else if(navindicator[0].id==="navloginindicator") {
+          navregisterindicator.removeClass("active");
+          accountfieldset.display="none";
+        }
+      }
+    </script>
+
+
+
+  </body>
+</html>
